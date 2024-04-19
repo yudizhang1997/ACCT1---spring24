@@ -3,92 +3,135 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Project: Archeology of the Futures</title>
-</head>
-<body>
+    <title>TouchDesigner: Archeology of the Futures</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=BioRhyme+Expanded:wght@300;400&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=BioRhyme+Expanded:wght@300;400&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=BioRhyme+Expanded&family=BioRhyme:wght@300&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200&display=swap" rel="stylesheet">
     <style>
         .container {
-            display: flex;
-        }
-        .column {
-            flex: 1;
-            padding: 20px;
-        }
-        .media {
-            /* Adjust this to handle media (images and videos) */
-        }
-        .images-container {
-            display: flex;
-            justify-content: space-around;
-        }
-        .images-container img {
-            max-width: 40%; /* Adjust as needed */
-            height: auto; /* Maintain aspect ratio */
+        max-width: 800px; /* 设置最大宽度 */
+        margin: auto; /* 居中显示 */
+        padding: 20px;
         }
         .video-container {
+        display: flex;
+        justify-content: center;
+        width: 100%; /* 视频容器占满容器宽度 */
+        max-width: 800px; /* 视频容器最大宽度与.container一致 */
+        margin-top: 20px; /* 图片与视频之间的间隙 */
+        }
+        .video-container video {
+        width: 100%; /* 视频宽度占满视频容器宽度 */
+        height: auto; /* 高度自动调整以保持纵横比 */
+        }
+        .container {
+            max-width: 800px; /* 设置最大宽度 */
+            margin: auto; /* 居中显示 */
+            padding: 20px;
+        }
+        .images-container, .video-container {
             display: flex;
             justify-content: center;
-            margin-top: 5px;
+            flex-wrap: wrap;
+        }
+        .parameter-images {
+            display: flex;
+            justify-content: space-around;
+            width: 100%;
+        }
+        .parameter-images img {
+            width: 100%; /* Adjust to show all four images in one row */
+            height: auto; /* Maintain aspect ratio */
+            margin: 5px;
+        }
+        .m-images {
+            display: flex;
+            justify-content: space-around;
+            width: 100%;
+        }
+        .m-images img {
+            width: 30%; /* Adjust to show all four images in one row */
+            height: auto; /* Maintain aspect ratio */
+            margin: 5px;
         }
         body {
-            background-color: white; /* 背景设置为黑色 */
-            color: black; /* 文字颜色设置为白色 */
+            background-color: white;
+            color: black;
+            font-family: 'Montserrat', sans-serif; /* Apply sans-serif font globally */
+            font-weight: 200;
         }
-        h1, h2, h3, h4, p {
-            color: black; /* 确保所有标题和段落的文字颜色为白色 */
+        h1 {
+            color: black;
+            font-family: 'Biorhyme Expanded', serif; /* Biorhyme font for all headings */
+            font-weight: 400; /* Font weight set to 400 */
+            text-align: center; /* Center align the h1 text */
+        }
+        h1 + p {
+            text-align: center; /* Center-align the paragraph directly following h1 */
+            margin-top: 40px; /* Adds spacing above the paragraph */
+            margin-bottom: 20px; /* Adds spacing below the paragraph */
+        }
+        h3{
+            color: #187BFF;
+            font-family: 'Biorhyme', serif; /* Biorhyme font for all headings */
+            font-weight: 300; /* Font weight set to 300 */
         }
         h3 {
-            margin-bottom: 10px; /* 或更小的值，根据需要调整 */
+            margin-bottom: 10px;
+        }
+        p.designer {
+            border-bottom: 1px solid #ccc; /* Adds a gray line below the paragraph */
+            padding-bottom: 10px; /* Adds spacing between the text and the line */
         }
     </style>    
 </head>
 <body>
     <div class="container">
-        <div class="column">
-            <h1>Archeology of the Futures</h1>
-            <p>Design by Yudi Zhang</p>
-            <h3>Project Description: </h3>
-            <p>It's a little device that has eight buttons on a prototype of an octave keyboard to simulate a mixer.
-            Materials used: ESP32 feather, dupont wire, resistors, buttons, card boards, soldering gun and double sided tape.</p>
-            <h3>Coding Documentation: </h3>
-            <h4>first step - assembling</h4>
-            <p>I connect all the materials mentioned above to a breadboard and ready to coding.</p>
-            <h4>second step - arduino coding</h4>
-            <div class="images-container">
-                <img src="keyboardarduino.png" alt="arduino" style="max-width: 60%;">
-            </div>
-            <p>I'm using an arduino to write the coding to allow the buttons to control the corresponding audio; and to allow the buttons to start playing the audio file in a loop when pressed once, and to stop playing when pressed again.</p>
-            <h4>thrid step - processing coding</h4>
-            <div class="images-container">
-                <img src="kp1.png" alt="kp1" style="max-width: 80%;">
-            </div>
-            <p>I then use the Processing language to write the code that controls the audio file and plays the audio file based on the signal received from the Arduino. When a string starting with "P" is received, the program either starts playing the corresponding audio file in a loop (if it is not currently playing) or stops playing the audio file (if it is playing). In addition, the program draws a rectangle on the graphical interface for each audio file and visualizes the audio playback state by changing the color of the rectangle (gray for playing, white for not playing).</p>
-            <h4>final step</h4>
-            <p>run and record with my band members! please check the videos ont he right side!</p>
+        <h1>Archeology of the Futures</h1>
+        <p class="designer">YUDI ZHANG / SPR 2024</p>
+        <h3>Concept matrix</h3>
+        <div class="parameter-images">
+            <img src="matrix.jpg" alt="concept matrix">
         </div>
-        <div class="column media">
-            <div class="images-container">
-                <img src="keyboard1.jpg" alt="1" style="max-width: 90%;">
-            </div>
-            <h3>Project Video: solo</h3>
-            <div class="video-container">
-                <video width="600" height="440" controls>
-                    <source src="solo.mp4" type="video/mp4">
-                </video>
-            </div>
-            <h3>Project Video: ensemble with Zhuo</h3>
-            <div class="video-container">
-                <video width="600" height="440" controls>
-                    <source src="ensemble.mp4" type="video/mp4">
-                </video>
-            </div>
-            <h3>Project Video: ensemble with Zhuo and Lexie</h3>
-            <div class="video-container">
-                <video width="600" height="440" controls>
-                    <source src="ensemble2.mp4" type="video/mp4">
-                </video>
-            </div>
+        <h3>My object: Lunchbox from PNL</h3>
+        <p>My setting is that Earth has collapsed in the future, and the privileged roam the universe in spacecraft to pass the time; ordinary people pioneer other planets, and the natural food they grow is consumed by the roamers. Explorers eat artificial-tasting nutritional substances developed in the laboratories of the roamers.
+
+            The name of this development lab is Pure Nutrition Lab (PNL). To placate the common people and subtly influence them, the meal boxes are printed with the slogans "Not for Sale," "Exclusive to Explorers," and "We don't cook food, but our products nourish your bodies."
+            
+            To further imply that the common people also have choices, the meal box features three rating buttons, but a closer look reveals that all are various degrees of smiley faces, hinting that the choice is actually very limited.</p>
+        <h3>Reference images</h3>
+        <div class="m-images">
+            <img src="f1.png" alt="f1">
+             <img src="f2.jpg" alt="f2">
         </div>
+        <h3>Logo Design</h3>
+        <div class="parameter-images">
+            <img src="logo.png" alt="Logo design">
+        </div>
+        <h3>Modeling in Blender</h3>
+        <div class="m-images">
+            <img src="m2.png" alt="M1">
+            <img src="m1.png" alt="M2">
+        </div>
+        <h3>Final rendering</h3>
+        <div class="parameter-images">
+            <img src="1.jpg" alt="B1">
+        </div>
+        <div class="parameter-images">
+            <img src="2.jpg" alt="B2">
+        </div>
+        <p class="designer"></p>
     </div>
+    <div class="container">
+
 </body>
 </html>
